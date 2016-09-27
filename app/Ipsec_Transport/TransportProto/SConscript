@@ -1,0 +1,12 @@
+Import('env')
+
+
+env_proto = env.Clone()
+debug = ARGUMENTS.get('debug',0)
+env_proto['LIBS']    = ['pthread','boost_system','protobuf']
+if int(debug):
+   env_proto['CCFLAGS'] = ['-pg','-Wall','-pthread','-O3','-DDEBUG_BUILD']
+else:
+   env_proto['CCFLAGS'] = ['-Wall','-pthread','-O3']
+print "Building protocol Buffer static library"
+env_proto.Library("protoLib.a",Glob("*.c*"))

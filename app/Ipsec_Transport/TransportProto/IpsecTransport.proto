@@ -1,0 +1,19 @@
+package TT;
+
+message IpsecTunnel{
+  required string interface = 1;
+  required string rsa = 2;
+  optional string hmac = 3;
+  optional string key = 4;
+  optional string algo = 5;
+  optional string tun = 6;
+  enum TunnelDirection{
+     BOTH = 0;
+     INGRESS = 1;
+     EGRESS = 2;
+  }
+}
+
+message IpsecTunnelsContainer{
+  repeated IpsecTunnel ipsec_tunnel = 1;
+}
