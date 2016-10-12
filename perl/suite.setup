@@ -1,0 +1,130 @@
+###########################################################
+# Anvil Test Suite Setup File
+# 
+# Copyright (c) 2006 AcmePacket Inc.
+#
+###########################################################
+
+### Replay Side ###
+
+# IP's relating the Linux interfaces
+{parameter replay_v4v}
+sa=[getLabNetworkInfo dut1.port1 -type gateway]
+da=[anvil dynamicip get replay_v4v.da [dut1.port1.network] -version 4]
+vlan=[dut1.port1.vlan]
+slot=[dut1.port1.slot]
+port=[dut1.port1.port]
+interface=[dut1.port1.interface]
+
+{parameter replay_v4}
+sa=[getLabNetworkInfo dut1.port2 -type gateway]
+da=[anvil dynamicip get replay_v4.da [dut1.port2.network] -version 4]
+vlan=[dut1.port2.vlan]
+slot=[dut1.port2.slot]
+port=[dut1.port2.port]
+interface=[dut1.port2.interface]
+
+# IP's relating the Linux interfaces
+{parameter replay_v6v}
+sa=[getLabNetworkInfo dut1.port3 -type ipv6_gateway]
+da=[anvil dynamicip get replay_v6v.da [dut1.port3.network] -version 6]
+vlan=[dut1.port3.vlan]
+slot=[dut1.port3.slot]
+port=[dut1.port3.port]
+interface=[dut1.port3.interface]
+
+{parameter replay_v6}
+sa=[getLabNetworkInfo dut1.port4 -type ipv6_gateway]
+da=[anvil dynamicip get replay_v6.da [dut1.port4.network] -version 6]
+vlan=[dut1.port4.vlan]
+slot=[dut1.port4.slot]
+port=[dut1.port4.port]
+interface=[dut1.port4.interface]
+
+
+### Listen Side ###
+
+# IP's relating the Linux interfaces
+{parameter listen_v4v}
+sa=[anvil dynamicip get listen_v4v.da [dut1.port1.network] -version 4]
+da=[getLabNetworkInfo dut1.port1 -type gateway]
+offsubnet=1.2.3.4
+vlan=[dut1.port1.vlan]
+slot=[dut1.port1.slot]
+port=[dut1.port1.port]
+interface=[dut1.port1.interface]
+
+{parameter listen_v4}
+sa=[anvil dynamicip get listen_v4.da [dut1.port2.network] -version 4]
+da=[getLabNetworkInfo dut1.port2 -type gateway]
+offsubnet=4.3.2.1
+vlan=[dut1.port2.vlan]
+slot=[dut1.port2.slot]
+port=[dut1.port2.port]
+interface=[dut1.port2.interface]
+
+# IP's relating the Linux interfaces
+{parameter listen_v6v}
+sa=[anvil dynamicip get listen_v6v.da [dut1.port3.network] -version 6]
+da=[getLabNetworkInfo dut1.port3 -type ipv6_gateway]
+offsubnet=1111:2222::3333:4444
+vlan=[dut1.port3.vlan]
+slot=[dut1.port3.slot]
+port=[dut1.port3.port]
+interface=[dut1.port3.interface]
+
+{parameter listen_v6}
+sa=[anvil dynamicip get listen_v6.da [dut1.port4.network] -version 6]
+da=[getLabNetworkInfo dut1.port4 -type ipv6_gateway]
+offsubnet=4444:3333::2222:1111
+vlan=[dut1.port4.vlan]
+slot=[dut1.port4.slot]
+port=[dut1.port4.port]
+interface=[dut1.port4.interface]
+
+
+### CR Side ###
+
+# IP's relating the Linux interfaces
+{parameter cr_v4v}
+sa=[anvil dynamicip get cr_v4v.da [dut1.port1.network] -version 4]
+da=[getLabNetworkInfo dut1.port1 -type gateway]
+vlan=[dut1.port1.vlan]
+slot=[dut1.port1.slot]
+port=[dut1.port1.port]
+interface=[dut1.port1.interface]
+cl_ip = [dut1.port1.ip]
+
+{parameter cr_v4}
+sa=[anvil dynamicip get cr_v4.da [dut1.port2.network] -version 4]
+da=[getLabNetworkInfo dut1.port2 -type gateway]
+vlan=[dut1.port2.vlan]
+slot=[dut1.port2.slot]
+port=[dut1.port2.port]
+interface=[dut1.port2.interface]
+cl_ip = [dut1.port2.ip]
+
+# IP's relating the Linux interfaces
+{parameter cr_v6v}
+sa=[anvil dynamicip get cr_v6v.da [dut1.port3.network] -version 6]
+da=[getLabNetworkInfo dut1.port3 -type ipv6_gateway]
+vlan=[dut1.port3.vlan]
+slot=[dut1.port3.slot]
+port=[dut1.port3.port]
+interface=[dut1.port3.interface]
+cl_ip = [dut1.port3.ip]
+
+{parameter cr_v6}
+sa=[anvil dynamicip get cr_v6.da [dut1.port4.network] -version 6]
+da=[getLabNetworkInfo dut1.port4 -type ipv6_gateway]
+vlan=[dut1.port4.vlan]
+slot=[dut1.port4.slot]
+port=[dut1.port4.port]
+interface=[dut1.port4.interface]
+cl_ip = [dut1.port4.ip]
+
+
+
+#########
+# End of File
+#########
